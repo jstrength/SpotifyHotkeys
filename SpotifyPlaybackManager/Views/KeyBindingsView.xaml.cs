@@ -1,25 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.ComponentModel.Composition;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using SpotifyPlaybackManager.ViewModels;
 
 namespace SpotifyPlaybackManager.Views
 {
-    /// <summary>
-    /// Interaction logic for KeyBindingsView.xaml
-    /// </summary>
-    public partial class KeyBindingsView : UserControl
+    [Export]
+    public partial class KeyBindingsView 
     {
+	[Import]
+        private KeyBindingsViewModel ViewModel { set { DataContext = value; } }
+
         public KeyBindingsView()
         {
             InitializeComponent();
