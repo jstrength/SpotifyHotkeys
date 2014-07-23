@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
+using System.Windows.Input;
 using SpotifyPlaybackManager.Enums;
 using SpotifyPlaybackManager.Interfaces;
 
@@ -13,7 +13,7 @@ namespace SpotifyPlaybackManager.Models
         private const int WH_KEYBOARD_LL = 13;
         private static LowLevelKeyboardProc _proc;
         private static IntPtr _hookId = IntPtr.Zero;
-         
+
         public KeyCapture(IKeyHandler keyHandler)
         {
             _keyHandler = keyHandler;
@@ -50,14 +50,19 @@ namespace SpotifyPlaybackManager.Models
             if (nCode >= 0 && wParam == (IntPtr) WmCodes.WM_KEYDOWN)
             {
                 var vkCode = Marshal.ReadInt32(lParam);
-                _keyHandler.HandleKeyDown((Keys)vkCode);
+                _keyHandler.HandleKeyDown(ResolveKey((char) vkCode));
             }
             else if (nCode >= 0 && wParam == (IntPtr) WmCodes.WM_KEYUP)
             {
                 var vkCode = Marshal.ReadInt32(lParam);
-                _keyHandler.HandleKeyUp((Keys)vkCode);
+                _keyHandler.HandleKeyUp(ResolveKey((char) vkCode));
             }
             return CallNextHookEx(_hookId, nCode, wParam, lParam);
+        }
+
+        private static Key ResolveKey(char charToResolve)
+        {
+            return KeyInterop.KeyFromVirtualKey(charToResolve);
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]

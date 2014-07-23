@@ -1,58 +1,74 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel.Composition;
+using System.Windows.Input;
 using SpotifyPlaybackManager.Interfaces;
 
 namespace SpotifyPlaybackManager.Models
 {
     public class SpotifyKeyHandler : IKeyHandler
     {
-        public IPlaybackHandler PlaybackHandler { set; private get; }
-        private bool _ctrlDown = false;
+        public IPlaybackHandler ItsPlaybackHandler { set; get; }
+        public PlaybackHotKeyBindings ItsPlaybackHotKeyBindings { set; get; }
 
-        public void HandleKeyUp(Keys key)
+        private bool _ctrlDown;
+
+        public SpotifyKeyHandler()
+        {
+            ItsPlaybackHandler = new SpotifyPlaybackHandler();
+        }
+
+        public void HandleKeyUp(Key key)
         {
             switch (key)
             {
-                case Keys.ControlKey:
-                case Keys.LControlKey:
-                case Keys.RControlKey:
+                case Key.LeftCtrl:
+                case Key.RightCtrl:
                     _ctrlDown = false;
                     break;
             }
         }
 
-        public void HandleKeyDown(Keys key)
+        public void HandleKeyDown(Key key)
         {
             switch (key)
             {
-                case Keys.ControlKey:
-                case Keys.LControlKey:
-                case Keys.RControlKey:
+                case Key.LeftCtrl:
+                case Key.RightCtrl:
                     _ctrlDown = true;
-                    break;
-                case Keys.NumPad4:
-                    if(_ctrlDown) PlaybackHandler.PrevTrack();
-                    break;
-                case Keys.NumPad5:
-                    if(_ctrlDown) PlaybackHandler.PlayPauseToggle();
-                    break;
-                case Keys.NumPad6:
-                    if(_ctrlDown) PlaybackHandler.NextTrack();
-                    break;
-                case Keys.NumPad8:
-                    if(_ctrlDown) PlaybackHandler.VolumeUp();
-                    break;
-                case Keys.NumPad2:
-                    if(_ctrlDown) PlaybackHandler.VolumeDown();
-                    break;
-                case Keys.NumPad0:
-                    if(_ctrlDown) PlaybackHandler.Mute();
-                    break;
-                case Keys.NumPad7:
-                    if(_ctrlDown) PlaybackHandler.Shuffle();
-                    break;
-                case Keys.NumPad9:
-                    if(_ctrlDown) PlaybackHandler.Replay();
-                    break;
+                    return;
+            }
+            if (_ctrlDown == false) return;
+
+            if (key.Equals(ItsPlaybackHotKeyBindings.PrevTrack))
+            {
+                ItsPlaybackHandler.PrevTrack();
+            }
+            else if (key.Equals(ItsPlaybackHotKeyBindings.NextTrack))
+            {
+                ItsPlaybackHandler.NextTrack();
+            }
+            else if (key.Equals(ItsPlaybackHotKeyBindings.PlayPause))
+            {
+                ItsPlaybackHandler.PlayPauseToggle();
+            }
+            else if (key.Equals(ItsPlaybackHotKeyBindings.Mute))
+            {
+                ItsPlaybackHandler.Mute();
+            }
+            else if (key.Equals(ItsPlaybackHotKeyBindings.Shuffle))
+            {
+                ItsPlaybackHandler.Shuffle();
+            }
+            else if (key.Equals(ItsPlaybackHotKeyBindings.Replay))
+            {
+                ItsPlaybackHandler.Replay();
+            }
+            else if (key.Equals(ItsPlaybackHotKeyBindings.VolumeDown))
+            {
+                ItsPlaybackHandler.VolumeDown();
+            }
+            else if (key.Equals(ItsPlaybackHotKeyBindings.VolumeUp))
+            {
+                ItsPlaybackHandler.VolumeUp();
             }
         }
     }

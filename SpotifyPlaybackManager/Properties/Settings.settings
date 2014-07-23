@@ -1,7 +1,35 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
+              GeneratedClassNamespace="SpotifyPlaybackManager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PlayPauseKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NumPad5</Value>
+    </Setting>
+    <Setting Name="Secondary" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LeftCtrl</Value>
+    </Setting>
+    <Setting Name="NextTrack" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NumPad6</Value>
+    </Setting>
+    <Setting Name="PrevTrack" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NumPad4</Value>
+    </Setting>
+    <Setting Name="Shuffle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NumPad3</Value>
+    </Setting>
+    <Setting Name="Replay" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NumPad1</Value>
+    </Setting>
+    <Setting Name="VolumeUp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NumPad8</Value>
+    </Setting>
+    <Setting Name="VolumeDown" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NumPad2</Value>
+    </Setting>
+    <Setting Name="Mute" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NumPad0</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

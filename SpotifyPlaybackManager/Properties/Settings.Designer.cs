@@ -8,22 +8,126 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SpotifyPlaybackManager.Properties
-{
-
-
+namespace SpotifyPlaybackManager.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NumPad5")]
+        public string PlayPauseKey {
+            get {
+                return ((string)(this["PlayPauseKey"]));
+            }
+            set {
+                this["PlayPauseKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LeftCtrl")]
+        public string Secondary {
+            get {
+                return ((string)(this["Secondary"]));
+            }
+            set {
+                this["Secondary"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NumPad6")]
+        public string NextTrack {
+            get {
+                return ((string)(this["NextTrack"]));
+            }
+            set {
+                this["NextTrack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NumPad4")]
+        public string PrevTrack {
+            get {
+                return ((string)(this["PrevTrack"]));
+            }
+            set {
+                this["PrevTrack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NumPad3")]
+        public string Shuffle {
+            get {
+                return ((string)(this["Shuffle"]));
+            }
+            set {
+                this["Shuffle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NumPad1")]
+        public string Replay {
+            get {
+                return ((string)(this["Replay"]));
+            }
+            set {
+                this["Replay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NumPad8")]
+        public string VolumeUp {
+            get {
+                return ((string)(this["VolumeUp"]));
+            }
+            set {
+                this["VolumeUp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NumPad2")]
+        public string VolumeDown {
+            get {
+                return ((string)(this["VolumeDown"]));
+            }
+            set {
+                this["VolumeDown"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NumPad0")]
+        public string Mute {
+            get {
+                return ((string)(this["Mute"]));
+            }
+            set {
+                this["Mute"] = value;
             }
         }
     }

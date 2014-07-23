@@ -8,18 +8,15 @@ namespace SpotifyPlaybackManager
     /// </summary>
     public partial class App
     {
-
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
             var catalogs = new AggregateCatalog();
 
-	    catalogs.Catalogs.Add(new AssemblyCatalog(typeof(SpotifyPlaybackManageModuleDefinitionBase).Assembly));
+            catalogs.Catalogs.Add(new AssemblyCatalog(typeof (SpotifyPlaybackManageModuleDefinitionBase).Assembly));
 
-	    new ApplicationBootstrapper(catalogs).Run();
+            new ApplicationBootstrapper(catalogs).Run();
         }
-
-
     }
 }

@@ -7,7 +7,7 @@ using SpotifyPlaybackManager.Views;
 
 namespace SpotifyPlaybackManager
 {
-    [ModuleExport(typeof(SpotifyPlaybackManageModuleDefinitionBase))]
+    [ModuleExport(typeof (SpotifyPlaybackManageModuleDefinitionBase))]
     public class SpotifyPlaybackManageModuleDefinitionBase : IModule
     {
         [Import] private KeyBindingsView _keyBindingsView;

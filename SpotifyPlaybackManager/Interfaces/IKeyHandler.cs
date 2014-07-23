@@ -1,12 +1,14 @@
-﻿using System.Windows.Forms;
+﻿using System.Windows.Input;
+using SpotifyPlaybackManager.Models;
 
 namespace SpotifyPlaybackManager.Interfaces
 {
     public interface IKeyHandler
     {
-        IPlaybackHandler PlaybackHandler { set; }
+        IPlaybackHandler ItsPlaybackHandler { set; }
+        PlaybackHotKeyBindings ItsPlaybackHotKeyBindings { set; get; }
 
-        void HandleKeyUp(Keys key);
-        void HandleKeyDown(Keys key);
+        void HandleKeyUp(Key key);
+        void HandleKeyDown(Key key);
     }
 }

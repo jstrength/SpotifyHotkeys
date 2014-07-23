@@ -9,10 +9,9 @@ namespace SpotifyPlaybackManager
         private readonly AggregateCatalog _catalogs;
 
         public ApplicationBootstrapper(AggregateCatalog catalogs)
-	{
-	    _catalogs = catalogs;
-
-	}
+        {
+            _catalogs = catalogs;
+        }
 
         protected override DependencyObject CreateShell()
         {
@@ -21,9 +20,9 @@ namespace SpotifyPlaybackManager
 
         protected override void ConfigureAggregateCatalog()
         {
-	    base.ConfigureAggregateCatalog();
+            base.ConfigureAggregateCatalog();
 
-	    AggregateCatalog.Catalogs.Add(_catalogs);
+            AggregateCatalog.Catalogs.Add(_catalogs);
         }
 
         protected override void InitializeShell()

@@ -1,14 +1,17 @@
 ﻿using System.ComponentModel.Composition;
-using System.Windows.Controls;
+using System.Windows.Input;
 using SpotifyPlaybackManager.ViewModels;
 
 namespace SpotifyPlaybackManager.Views
 {
     [Export]
-    public partial class KeyBindingsView 
+    public partial class KeyBindingsView
     {
-	[Import]
-        private KeyBindingsViewModel ViewModel { set { DataContext = value; } }
+        [Import]
+        private KeyBindingsViewModel ViewModel
+        {
+            set { DataContext = value; }
+        }
 
         public KeyBindingsView()
         {
