@@ -30,9 +30,9 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <CheckBox Content="Control" IsChecked="True" IsEnabled="False" />
-            <CheckBox Grid.Column="1" Content="Alt" IsEnabled="False" />
-            <CheckBox Grid.Column="2" Content="Shift" IsEnabled="False" />
+            <CheckBox Content="Control" IsChecked="{Binding ItsPlaybackHotKeyBindings.Ctrl}"/>
+            <CheckBox Grid.Column="1" Content="Alt" IsChecked="{Binding ItsPlaybackHotKeyBindings.Alt}"/>
+            <CheckBox Grid.Column="2" Content="Shift" IsChecked="{Binding ItsPlaybackHotKeyBindings.Shift}"/>
         </Grid>
         <Label Grid.Row="1">Play/Pause</Label>
         <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding ItsHotkeySelectionList}"

@@ -3,11 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Prism="http://www.codeplex.com/prism"
         Title="Spotify Hotkeys" ResizeMode="CanMinimize"
-        SizeToContent="WidthAndHeight" Icon="{DynamicResource _appIcon}">
-    <Window.Resources>
-        <ResourceDictionary>
-            <BitmapImage x:Key="_appIcon" UriSource="Views\spotify.ico" />
-        </ResourceDictionary>
-    </Window.Resources>
+        SizeToContent="WidthAndHeight">
     <ItemsControl Prism:RegionManager.RegionName="Region1"></ItemsControl>
 </Window>

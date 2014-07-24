@@ -1,23 +1,37 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Windows.Input;
-using SpotifyPlaybackManager.Enums;
+﻿using System.Windows.Input;
 using SpotifyPlaybackManager.Properties;
 
 namespace SpotifyPlaybackManager.Models
 {
     public class PlaybackHotKeyBindings
     {
-        public Key Secondary
+        public bool Shift
         {
-            get { return (Key) KeyConverter.ConvertFromString(Settings.Default.Secondary); }
+            get { return Settings.Default.Shift; }
             set
             {
-                Settings.Default.Secondary = KeyConverter.ConvertToString(value);
+                Settings.Default.Shift = value;
                 Settings.Default.Save();
             }
         }
-
+        public bool Ctrl
+        {
+            get { return Settings.Default.Ctrl; }
+            set
+            {
+                Settings.Default.Ctrl = value;
+                Settings.Default.Save();
+            }
+        }
+        public bool Alt
+        {
+            get { return Settings.Default.Alt; }
+            set
+            {
+                Settings.Default.Alt = value;
+                Settings.Default.Save();
+            }
+        }
         public Key PlayPause
         {
             get { return (Key) KeyConverter.ConvertFromString(Settings.Default.PlayPauseKey); }

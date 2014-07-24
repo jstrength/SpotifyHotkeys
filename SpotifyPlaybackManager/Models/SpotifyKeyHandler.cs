@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.Composition;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using SpotifyPlaybackManager.Interfaces;
 
 namespace SpotifyPlaybackManager.Models
@@ -10,6 +9,8 @@ namespace SpotifyPlaybackManager.Models
         public PlaybackHotKeyBindings ItsPlaybackHotKeyBindings { set; get; }
 
         private bool _ctrlDown;
+        private bool _altDown;
+        private bool _shiftDown;
 
         public SpotifyKeyHandler()
         {
@@ -24,6 +25,14 @@ namespace SpotifyPlaybackManager.Models
                 case Key.RightCtrl:
                     _ctrlDown = false;
                     break;
+                case Key.LeftAlt:
+                case Key.RightAlt:
+                    _altDown = false;
+                    return;
+                case Key.LeftShift:
+                case Key.RightShift:
+                    _shiftDown = false;
+                    return;
             }
         }
 
@@ -35,8 +44,21 @@ namespace SpotifyPlaybackManager.Models
                 case Key.RightCtrl:
                     _ctrlDown = true;
                     return;
+                case Key.LeftAlt:
+                case Key.RightAlt:
+                    _altDown = true;
+                    return;
+                case Key.LeftShift:
+                case Key.RightShift:
+                    _shiftDown = true;
+                    return;
             }
-            if (_ctrlDown == false) return;
+            if (ItsPlaybackHotKeyBindings.Shift && !_shiftDown ||
+                ItsPlaybackHotKeyBindings.Alt && !_altDown ||
+                ItsPlaybackHotKeyBindings.Ctrl && !_ctrlDown)
+            {
+                return;
+            }
 
             if (key.Equals(ItsPlaybackHotKeyBindings.PrevTrack))
             {
