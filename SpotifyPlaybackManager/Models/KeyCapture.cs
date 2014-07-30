@@ -50,17 +50,17 @@ namespace SpotifyPlaybackManager.Models
             if (nCode >= 0 && wParam == (IntPtr) WmCodes.WM_KEYDOWN)
             {
                 var vkCode = Marshal.ReadInt32(lParam);
-                _keyHandler.HandleKeyDown(ResolveKey((char) vkCode));
+                _keyHandler.HandleKeyDown(ResolveKey(vkCode));
             }
             else if (nCode >= 0 && wParam == (IntPtr) WmCodes.WM_KEYUP)
             {
                 var vkCode = Marshal.ReadInt32(lParam);
-                _keyHandler.HandleKeyUp(ResolveKey((char) vkCode));
+                _keyHandler.HandleKeyUp(ResolveKey(vkCode));
             }
             return CallNextHookEx(_hookId, nCode, wParam, lParam);
         }
 
-        private static Key ResolveKey(char charToResolve)
+        private static Key ResolveKey(int charToResolve)
         {
             return KeyInterop.KeyFromVirtualKey(charToResolve);
         }

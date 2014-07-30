@@ -50,33 +50,29 @@ namespace SpotifyPlaybackManager.Models
             SendMessage(_spotifyHwnd, (uint) WmCodes.WM_APPCOMMAND, IntPtr.Zero, (IntPtr) AppcommandVkCodes.PREV_TRACK);
         }
 
-        public void VolumeDown()
-        {
-            SendMessage(_spotifyHwnd, (uint) WmCodes.WM_KEYDOWN, (IntPtr) Keys.ControlKey, IntPtr.Zero);
-            SendMessage(_spotifyHwnd, (uint) WmCodes.WM_KEYDOWN, (IntPtr) Keys.Down, IntPtr.Zero);
-        }
-
-        public void VolumeUp()
-        {
-            SendMessage(_spotifyHwnd, (uint) WmCodes.WM_KEYDOWN, (IntPtr) Keys.ControlKey, IntPtr.Zero);
-            SendMessage(_spotifyHwnd, (uint) WmCodes.WM_KEYDOWN, (IntPtr) Keys.Up, IntPtr.Zero);
-        }
-
-        public void Shuffle()
-        {
-            SendMessage(_spotifyHwnd, (uint) WmCodes.WM_KEYDOWN, (IntPtr) Keys.ControlKey, IntPtr.Zero);
-            SendMessage(_spotifyHwnd, (uint) WmCodes.WM_KEYDOWN, (IntPtr) Keys.S, IntPtr.Zero);
-        }
-
         public void Mute()
         {
             SendMessage(_spotifyHwnd, (uint) WmCodes.WM_APPCOMMAND, IntPtr.Zero, (IntPtr) AppcommandVkCodes.MUTE_VOLUME);
         }
 
+        public void VolumeDown()
+        {
+            SendMessageHelper.SendControlKey(_spotifyHwnd, (IntPtr) Keys.Down);
+        }
+
+        public void VolumeUp()
+        {
+            SendMessageHelper.SendControlKey(_spotifyHwnd, (IntPtr) Keys.Up);
+        }
+
+        public void Shuffle()
+        {
+            SendMessageHelper.SendControlKey(_spotifyHwnd, (IntPtr) Keys.S);
+        }
+
         public void Replay()
         {
-            SendMessage(_spotifyHwnd, (uint) WmCodes.WM_KEYDOWN, (IntPtr) Keys.ControlKey, IntPtr.Zero);
-            SendMessage(_spotifyHwnd, (uint) WmCodes.WM_KEYDOWN, (IntPtr) Keys.R, IntPtr.Zero);
+            SendMessageHelper.SendControlKey(_spotifyHwnd, (IntPtr) Keys.R);
         }
 
         [DllImport("user32.dll", SetLastError = true)]

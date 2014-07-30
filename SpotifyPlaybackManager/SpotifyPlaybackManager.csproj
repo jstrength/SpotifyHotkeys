@@ -88,6 +88,7 @@
     <Compile Include="ApplicationBootstrapper.cs" />
     <Compile Include="Enums\Playback.cs" />
     <Compile Include="Enums\WmCodes.cs" />
+    <Compile Include="Models\SendKeysHelper.cs" />
     <Compile Include="Models\PlaybackHotKeyBindings.cs" />
     <Compile Include="SpotifyPlaybackManageModuleDefinitionBase.cs" />
     <Compile Include="Views\KeyBindingsView.xaml.cs">

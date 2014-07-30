@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Input;
 using SpotifyPlaybackManager.Interfaces;
 
 namespace SpotifyPlaybackManager.Models
@@ -8,58 +10,26 @@ namespace SpotifyPlaybackManager.Models
         public IPlaybackHandler ItsPlaybackHandler { set; get; }
         public PlaybackHotKeyBindings ItsPlaybackHotKeyBindings { set; get; }
 
-        private bool _ctrlDown;
-        private bool _altDown;
-        private bool _shiftDown;
+        private readonly HashSet<Key> _keyMonitor;
 
         public SpotifyKeyHandler()
         {
             ItsPlaybackHandler = new SpotifyPlaybackHandler();
+            _keyMonitor = new HashSet<Key>();
         }
 
         public void HandleKeyUp(Key key)
         {
-            switch (key)
-            {
-                case Key.LeftCtrl:
-                case Key.RightCtrl:
-                    _ctrlDown = false;
-                    break;
-                case Key.LeftAlt:
-                case Key.RightAlt:
-                    _altDown = false;
-                    return;
-                case Key.LeftShift:
-                case Key.RightShift:
-                    _shiftDown = false;
-                    return;
-            }
+            _keyMonitor.Remove(key);
         }
 
         public void HandleKeyDown(Key key)
         {
-            switch (key)
-            {
-                case Key.LeftCtrl:
-                case Key.RightCtrl:
-                    _ctrlDown = true;
-                    return;
-                case Key.LeftAlt:
-                case Key.RightAlt:
-                    _altDown = true;
-                    return;
-                case Key.LeftShift:
-                case Key.RightShift:
-                    _shiftDown = true;
-                    return;
-            }
-            if (ItsPlaybackHotKeyBindings.Shift && !_shiftDown ||
-                ItsPlaybackHotKeyBindings.Alt && !_altDown ||
-                ItsPlaybackHotKeyBindings.Ctrl && !_ctrlDown)
+            //key already in
+            if (!_keyMonitor.Add(key))
             {
                 return;
             }
-
             if (key.Equals(ItsPlaybackHotKeyBindings.PrevTrack))
             {
                 ItsPlaybackHandler.PrevTrack();
@@ -68,7 +38,7 @@ namespace SpotifyPlaybackManager.Models
             {
                 ItsPlaybackHandler.NextTrack();
             }
-            else if (key.Equals(ItsPlaybackHotKeyBindings.PlayPause))
+            else if (_keyMonitor.Contains(ItsPlaybackHotKeyBindings.PlayPause))
             {
                 ItsPlaybackHandler.PlayPauseToggle();
             }
