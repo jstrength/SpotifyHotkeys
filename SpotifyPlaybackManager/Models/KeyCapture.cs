@@ -47,15 +47,18 @@ namespace SpotifyPlaybackManager.Models
         private IntPtr HookCallback(
             int nCode, IntPtr wParam, IntPtr lParam)
         {
-            if (nCode >= 0 && wParam == (IntPtr) WmCodes.WM_KEYDOWN)
+            if (!SendMessageHelper.ItsIgnoreKeys)
             {
-                var vkCode = Marshal.ReadInt32(lParam);
-                _keyHandler.HandleKeyDown(ResolveKey(vkCode));
-            }
-            else if (nCode >= 0 && wParam == (IntPtr) WmCodes.WM_KEYUP)
-            {
-                var vkCode = Marshal.ReadInt32(lParam);
-                _keyHandler.HandleKeyUp(ResolveKey(vkCode));
+                if (nCode >= 0 && wParam == (IntPtr) WmCodes.WM_KEYDOWN || wParam == (IntPtr) WmCodes.WM_SYSKEYDOWN)
+                {
+                    var vkCode = Marshal.ReadInt32(lParam);
+                    _keyHandler.HandleKeyDown(ResolveKey(vkCode));
+                }
+                else if (nCode >= 0 && wParam == (IntPtr) WmCodes.WM_KEYUP)
+                {
+                    var vkCode = Marshal.ReadInt32(lParam);
+                    _keyHandler.HandleKeyUp(ResolveKey(vkCode));
+                }
             }
             return CallNextHookEx(_hookId, nCode, wParam, lParam);
         }

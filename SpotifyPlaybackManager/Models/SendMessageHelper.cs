@@ -6,24 +6,31 @@ namespace SpotifyPlaybackManager.Models
 {
     class SendMessageHelper
     {
+        public static bool ItsIgnoreKeys = false;
         public static void SendControlKey(IntPtr hwnd, IntPtr key)
         {
+            ItsIgnoreKeys = true;
             var input = new INPUT();
             input.type = INPUT_KEYBOARD;
             var inputSize = Marshal.SizeOf(input);
+            var KEYEVENTF_KEYDOWN = input.mkhi.ki.dwFlags;
+
+            //disable alt
+            input.mkhi.ki.wVk = VK_ALT;
+            input.mkhi.ki.dwFlags = KEYEVENTF_KEYUP;
+            SendInput(1, ref input, inputSize);
+
             input.mkhi.ki.wVk = VK_CONTROL;
-
+            input.mkhi.ki.dwFlags = KEYEVENTF_KEYDOWN;
             //Keys DOWN
-            var isKeyDown = (GetAsyncKeyState(VK_CONTROL) & 0x10000) != 0;
-
-            if (!isKeyDown)
-                SendInput(1, ref input, inputSize);
+            SendInput(1, ref input, inputSize);
             SendMessage(hwnd, (uint) WmCodes.WM_KEYDOWN, key, IntPtr.Zero);
 
             //Keys UP
             input.mkhi.ki.dwFlags = KEYEVENTF_KEYUP;
             SendInput(1, ref input, inputSize);
             SendMessage(hwnd, (uint) WmCodes.WM_KEYUP, key, IntPtr.Zero);
+            ItsIgnoreKeys = false;
         }
 
         [DllImport("user32.dll")]
@@ -83,8 +90,7 @@ namespace SpotifyPlaybackManager.Models
         const int INPUT_KEYBOARD = 1;
         const uint KEYEVENTF_KEYUP = 0x0002;
 
-        const ushort VK_SHIFT = 0x10;
+        const ushort VK_ALT = 0x12;
         const ushort VK_CONTROL = 0x11;
-        const ushort VK_MENU = 0x12;
     }
 }

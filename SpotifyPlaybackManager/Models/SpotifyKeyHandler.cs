@@ -30,6 +30,17 @@ namespace SpotifyPlaybackManager.Models
             {
                 return;
             }
+
+            //control keys
+            if (ItsPlaybackHotKeyBindings.Ctrl && !(_keyMonitor.Contains(Key.LeftCtrl) || _keyMonitor.Contains(Key.RightCtrl)))
+            {
+                return;
+            }
+            if (ItsPlaybackHotKeyBindings.Alt && !(_keyMonitor.Contains(Key.LeftAlt) || _keyMonitor.Contains(Key.RightAlt)))
+            {
+                return;
+            }
+
             if (key.Equals(ItsPlaybackHotKeyBindings.PrevTrack))
             {
                 ItsPlaybackHandler.PrevTrack();
