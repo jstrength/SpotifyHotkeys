@@ -142,17 +142,5 @@ namespace SpotifyPlaybackManager.Properties {
                 this["Alt"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Shift {
-            get {
-                return ((bool)(this["Shift"]));
-            }
-            set {
-                this["Shift"] = value;
-            }
-        }
     }
 }

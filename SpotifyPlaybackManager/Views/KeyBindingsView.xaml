@@ -24,16 +24,8 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid ColumnSpan="2" Margin="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <CheckBox Content="Control" IsChecked="{Binding ItsPlaybackHotKeyBindings.Ctrl}"/>
-            <CheckBox Grid.Column="1" Content="Alt" IsChecked="{Binding ItsPlaybackHotKeyBindings.Alt}"/>
-            <CheckBox Grid.Column="2" Content="Shift" IsChecked="{Binding ItsPlaybackHotKeyBindings.Shift}"/>
-        </Grid>
+        <CheckBox Margin="5" Content="Control" IsChecked="{Binding ItsPlaybackHotKeyBindings.Ctrl}"/>
+        <CheckBox Margin="5" Grid.Column="1" Content="Alt" IsChecked="{Binding ItsPlaybackHotKeyBindings.Alt}"/>
         <Label Grid.Row="1">Play/Pause</Label>
         <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding ItsHotkeySelectionList}"
                   SelectedValue="{Binding ItsPlaybackHotKeyBindings.PlayPause}">

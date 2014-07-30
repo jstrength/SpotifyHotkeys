@@ -5,15 +5,6 @@ namespace SpotifyPlaybackManager.Models
 {
     public class PlaybackHotKeyBindings
     {
-        public bool Shift
-        {
-            get { return Settings.Default.Shift; }
-            set
-            {
-                Settings.Default.Shift = value;
-                Settings.Default.Save();
-            }
-        }
         public bool Ctrl
         {
             get { return Settings.Default.Ctrl; }
